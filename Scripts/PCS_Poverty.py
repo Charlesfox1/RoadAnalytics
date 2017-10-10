@@ -12,14 +12,15 @@ import shapely.wkt
 roadID = ''
 
 def main(district="test", admin="Poverty_Communes_2009.shp", curRoadID="ID"):
-    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0]
+    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+    path = os.path.split(path)[0]
     dash = os.path.join(path, r'dashboard.xlsm')
     ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)
     district = ctrl['Weight'].loc['DISTRICT']
 
     admin = r'Poverty_Communes_2009.shp'
     roadID = curRoadID
-
+    print "Running: Poverty Analysis on %s. Do not interrupt" % district
     #Set up logging
     logging.basicConfig(filename = os.path.join(path, 'runtime',district,"PCS_Poverty_log.log"), level=logging.INFO, format="%(asctime)s-%(levelname)s: %(message)s")
     logging.info("Starting PCS Poverty Process")

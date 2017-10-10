@@ -17,11 +17,12 @@ verbose = 1
 checkcols = 1
 
 def main(district="YD"):
-    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0]
+    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+    path = os.path.split(path)[0]
     dash = os.path.join(path,r'dashboard.xlsm')
     ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)
     district = ctrl['Weight'].loc['DISTRICT']
-
+    print "Running: Risk Analysis on %s. Do not interrupt" % district
     #Set all input paths
     hazardPath = os.path.join(path, "PCS\\Hazard\\HazardData") #Stores the hazard raster data
 

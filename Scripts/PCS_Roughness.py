@@ -8,7 +8,8 @@ import os, sys, inspect, logging
 import pandas as pd
 
 def Main(district="test"):
-    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0]
+    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+    path = os.path.split(path)[0]
     dash = os.path.join(path,r'dashboard.xlsm')
     ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)
     district = ctrl['Weight'].loc['DISTRICT']
