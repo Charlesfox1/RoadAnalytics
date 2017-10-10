@@ -40,7 +40,7 @@ def main(adminIsPoint = False):
 
     logging.basicConfig(filename = os.path.join(path, 'runtime', district, "PCS_Criticality_log.log"), level=logging.INFO, format="%(asctime)s-%(levelname)s: %(message)s")
     logging.info("Starting Criticality Process")
-
+    print "Running: Criticality Analysis on %s. Do not interrupt" % district
     # Path Settings
     outpath = os.path.join(path, 'Outputs', '%s' % district)
     runtime = os.path.join(path, r'PCS\Criticality\runtime\%s\\' % district)

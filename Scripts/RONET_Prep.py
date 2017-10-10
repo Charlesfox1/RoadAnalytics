@@ -8,7 +8,7 @@ def Main(district = 'YD'):
     dash = os.path.join(path,r'dashboard.xlsm')
     ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)
     district = ctrl['Weight'].loc['DISTRICT']
-
+    print "Running: RONET analysis preparation on %s. Do not interrupt" % district
     #Set up logging
     logging.basicConfig(filename = os.path.join(path, 'runtime', district,"RONET_log.log"), level=logging.INFO, format="%(asctime)s-%(levelname)s: %(message)s")
     logging.info("Starting RONET input preparation process")

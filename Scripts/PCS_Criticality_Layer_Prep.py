@@ -20,7 +20,7 @@ district = ctrl['Weight'].loc['DISTRICT']
 
 logging.basicConfig(filename = os.path.join(path, 'runtime', district, "PCS_Criticality_Layer_Prep.log"), level=logging.INFO, format="%(asctime)s-%(levelname)s: %(message)s")
 logging.info("Starting Layer Prep Process")
-
+print "Running: Criticality Layer Preparation Tool for %s. Do not interrupt" % district
 #Settings
 crs_in = {'init': 'epsg:4326'}   #WGS 84
 
