@@ -19,7 +19,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-module_path = os.path.join(os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\scripts")[0], "PCS/Criticality")
+module_path = os.path.join(os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0], "PCS/Criticality")
 if module_path not in sys.path:
     sys.path.append(module_path)
 
@@ -31,7 +31,7 @@ verbose = 1
 dump = 1
 
 def main(adminIsPoint = False):
-    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\scripts")[0]
+    path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0]
     dash = os.path.join(path,r'dashboard.xlsm')
     ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)
     district = ctrl['Weight'].loc['DISTRICT']

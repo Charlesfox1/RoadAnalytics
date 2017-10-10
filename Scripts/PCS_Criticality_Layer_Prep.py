@@ -10,7 +10,7 @@ import geopandas as gpd
 import numpy as np
 import shapely.geometry.base
 import shapely.wkt
-path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\scripts")[0]
+path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0]
 dash = os.path.join(path,r'dashboard.xlsm')
 
 ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)

@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 import geopandas as gdp
 
-path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\scripts")[0]
+path = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])).split("\Scripts")[0]
 dash = os.path.join(path, r'dashboard.xlsm')
 ctrl = pd.read_excel(dash, sheetname = "AGGREGATE", index_col = 0)
 district = ctrl['Weight'].loc['DISTRICT']
