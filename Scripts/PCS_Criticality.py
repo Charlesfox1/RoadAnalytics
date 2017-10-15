@@ -315,7 +315,6 @@ def summarise(diff, iso, demand, origin, destination, Q, nLink, gdf2, ctrldf):
         ctrldf['Isolate_Weight'][0] * out['Isolated_score_%s' % Q]
         )
     out = out[['ID','Social_Cost_%s' % Q,'Isolated_Trips_%s' % Q,'CRIT_SCORE_%s' % Q]]
-    Filedump(out, 'midway_%s' % Q, "C:\Users\charl\Documents\GitHub\RoadLabPro_Utils\PCS\Criticality\Runtime\YD")
     return out
 
 def calculateOD(origin, destination, Q, gdf_sub, G2, nLink, gdf2, runtime, ctrldf):
