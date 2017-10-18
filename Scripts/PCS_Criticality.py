@@ -247,19 +247,19 @@ def BreakEdge(origin, destination, penalty, baseCost, name, G2, runtime, nLink, 
     to_allNode = []
     G = copy.deepcopy(G2)
     cost_disrupt = np.zeros((nLink, len(origin),len(destination)))
+    ts = time.time()
     for road in range(len(gdf2)):
-        start = time.clock()
+        ts1 = time.time()
         w = G[gdf2['FNODE_'][road]][gdf2['TNODE_'][road]]['total_cost']
         G[gdf2['FNODE_'][road]][gdf2['TNODE_'][road]]['total_cost'] = 1e10
         for o in range(len(origin)):
-            to_allNode.append(nx.single_source_dijkstra_path_length(G,origin[o],weight = 'total_cost'))
+            for d in range(len(destination)):
+                cost_disrupt[road][o][d] = nx.dijkstra_path_length(G,origin[o],destination[d], weight = 'total_cost')
         G[gdf2['FNODE_'][road]][gdf2['TNODE_'][road]]['total_cost'] = w # Resetting traverse cost to original (w)
-    for item_number in range(len(to_allNode)):
-        road_link_id = int(item_number / len(origin))
-        o = item_number % len(origin)
-        for d in range(len(destination)):
-            cost_disrupt[road_link_id][o][d] = to_allNode[item_number].get(destination[d]) # shortest path cost for each OD; # of link * OD *OD
-    diff = cost_disrupt - baseCost
+        logging.info("Computation completed for road: %s of %s. Compute time: %s seconds" % (road+1, len(gdf2)+1, (time.time() - ts1)))
+        if ((road+1) % 10) == 0:
+            logging.info("estimated time remaining for this O-D combination (hours): %s" % (((1 / ((road+1) / (len(gdf2)+1))) * (time.time() - ts))/3600))
+    diff = (cost_disrupt - baseCost)
     Filedump(pd.DataFrame(cost_disrupt[1]),'cost_disrupt_%s' % name, runtime)
     # change cost of the isolated OD to penalty value
     iso = np.zeros((nLink, len(origin),len(destination)))
