@@ -5,7 +5,14 @@ Thumbs.db
 ehthumbs.db
 
 # Repository Specific
-Outputs
+PCS/Hazard/Runtime/YD/*
+PCS/Hazard/Runtime/TT/*
+PCS/Criticality/Runtime/YD/*
+PCS/Criticality/Runtime/TT/*
+PCS/Criticality/Input/YD/*
+PCS/Criticality/Input/TT/*
+Outputs/YD/*
+Outputs/TT/*
 HazardData
 Vietnam_Data_Layers
 *.log
