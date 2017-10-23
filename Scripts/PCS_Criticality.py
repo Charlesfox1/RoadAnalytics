@@ -257,8 +257,6 @@ def BreakEdge(origin, destination, penalty, baseCost, name, G2, runtime, nLink, 
                 cost_disrupt[road][o][d] = nx.dijkstra_path_length(G,origin[o],destination[d], weight = 'total_cost')
         G[gdf2['FNODE_'][road]][gdf2['TNODE_'][road]]['total_cost'] = w # Resetting traverse cost to original (w)
         logging.info("Computation completed for road: %s of %s. Compute time: %s seconds" % (road+1, len(gdf2)+1, (time.time() - ts1)))
-        if ((road+1) % 10) == 0:
-            logging.info("estimated time remaining for this O-D combination (hours): %s" % (((1 / ((road+1) / (len(gdf2)+1))) * (time.time() - ts))/3600))
     diff = (cost_disrupt - baseCost)
     Filedump(pd.DataFrame(cost_disrupt[1]),'cost_disrupt_%s' % name, runtime)
     # change cost of the isolated OD to penalty value
